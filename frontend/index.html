@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Experiment Frontend</title></head>
+<body>
+<h1>Experiment Frontend</h1>
+<button id="ping">Ping API</button>
+<pre id="out"></pre>
+<script>
+document.getElementById('ping').addEventListener('click', async () => {
+  try {
+    const res = await fetch('http://localhost:8000/ping');
+    const json = await res.json();
+    document.getElementById('out').textContent = JSON.stringify(json, null, 2);
+  } catch (e) {
+    document.getElementById('out').textContent = e.toString();
+  }
+});
+</script>
+</body>
+</html>
